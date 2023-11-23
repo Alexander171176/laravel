@@ -17,6 +17,11 @@
     `docker exec php-app php artisan migrate`
 7) Install Dropzone
     `npm install --save dropzone`
-8) Install Breeze
-    `composer require laravel/breeze --dev`
+8) Install Breeze <br>
+    `composer require laravel/breeze --dev`<br>
     `php artisan breeze:install vue`
+9) DB Seed <br>
+   `docker exec php-app php artisan db:seed --class=BlogCategorySeeder`<br>
+   `docker exec php-app php artisan db:seed --class=BlogTagSeeder`<br>
+   `docker exec php-app php artisan db:seed --class=BlogPostSeeder`<br>
+   `docker exec php-app php artisan db:seed --class=BlogPostBlogTagSeeder`<br> 
