@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogPost\Index;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +17,40 @@ use Inertia\Inertia;
 |
 */
 
+//Route::get('/post', function () {
+//    return Inertia::render('BlogPost/Index', [
+//        'canLogin' => Route::has('login'),
+//        'canRegister' => Route::has('register'),
+//    ]);
+//})->name('post.index');
+//
+//Route::get('/', function () {
+//    return Inertia::render('Welcome', [
+//        'canLogin' => Route::has('login'),
+//        'canRegister' => Route::has('register'),
+//    ]);
+//});
+
+// Группировка маршрутов, чтобы оба маршрута имели доступ к параметрам login и register
+//Route::group(['middleware' => 'web'], function () {
+//    Route::get('/', function () {
+//        return Inertia::render('Welcome', [
+//            'canLogin' => Route::has('login'),
+//            'canRegister' => Route::has('register'),
+//        ]);
+//    })->name('home');
+//
+//    Route::get('/post', [Index::class, 'index'])->name('post.index');
+//});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/post', [Index::class, 'index'])->name('post.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
